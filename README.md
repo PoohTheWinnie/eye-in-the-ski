@@ -1,47 +1,24 @@
 <p align="center">
-  <a href="https://nextjs-fastapi-starter.vercel.app/">
-    <img src="https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png" height="96">
-    <h3 align="center">Next.js FastAPI Starter</h3>
+  <a href="https://eye-in-the-ski.vercel.app">
+    <img src="public/logo.png" height="200" style="border-radius: 20px;">
   </a>
+  <h3 align="center">
+    <a href="https://eye-in-the-ski.vercel.app">Eye in the Ski</a>
+  </h3>
 </p>
-
-<p align="center">Simple Next.j 14 boilerplate that uses <a href="https://fastapi.tiangolo.com/">FastAPI</a> as the API backend.</p>
 
 <br/>
 
-## Introduction
+## Built With
 
-This is a hybrid Next.js 14 + Python template. One great use case of this is to write Next.js apps that use Python AI libraries on the backend, while still having the benefits of Next.js Route Handlers and Server Side Rendering.
+This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-## How It Works
+* [![Next][Next.js]][Next-url]
+* [![React][React.js]][React-url]
+* [![FastAPI][FastAPI]][FastAPI-url]
+* [![PostgreSQL][PostgreSQL]][PostgreSQL-url]
+* [![TailwindCSS][TailwindCSS]][TailwindCSS-url]
 
-The Python/FastAPI server is mapped into to Next.js app under `/api/`.
-
-This is implemented using [`next.config.js` rewrites](https://github.com/digitros/nextjs-fastapi/blob/main/next.config.js) to map any request to `/api/py/:path*` to the FastAPI API, which is hosted in the `/api` folder.
-
-Also, the app/api routes are available on the same domain, so you can use NextJs Route Handlers and make requests to `/api/...`.
-
-On localhost, the rewrite will be made to the `127.0.0.1:8000` port, which is where the FastAPI server is running.
-
-In production, the FastAPI server is hosted as [Python serverless functions](https://vercel.com/docs/concepts/functions/serverless-functions/runtimes/python) on Vercel.
-
-## Demo
-
-https://nextjs-fastapi-starter.vercel.app/
-
-## Deploy Your Own
-
-You can clone & deploy it to Vercel with one click:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdigitros%2Fnextjs-fastapi%2Ftree%2Fmain)
-
-## Developing Locally
-
-You can clone & create this repo with the following command
-
-```bash
-npx create-next-app nextjs-fastapi --example "https://github.com/digitros/nextjs-fastapi"
-```
 
 ## Getting Started
 
@@ -62,7 +39,23 @@ yarn
 pnpm install
 ```
 
-Then, run the development server(python dependencies will be installed automatically here):
+### Environment Variables
+
+Create a `.env` file in the root directory:
+
+```bash
+# Frontend (Next.js) Environment Variables
+NEXT_PUBLIC_API_URL=          # Your API URL (e.g., http://localhost:8000)
+
+# Backend (FastAPI) Environment Variables
+AUTH_SECRET_KEY=              # Your JWT secret key
+AUTH_ALGORITHM=               # JWT algorithm (e.g., HS256)
+DATABASE_URL=                 # PostgreSQL connection string
+```
+
+For development, you can also create a `.env.local` file with your local values. Make sure to add `.env` and `.env.local` to your `.gitignore`.
+
+Then, run the development server (python dependencies will be installed automatically here):
 
 ```bash
 npm run dev
@@ -74,14 +67,44 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-The FastApi server will be running on [http://127.0.0.1:8000](http://127.0.0.1:8000) – feel free to change the port in `package.json` (you'll also need to update it in `next.config.js`).
+The FastApi server will be running on [http://127.0.0.1:8000](http://127.0.0.1:8000) – feel free to change the port in `package.json` (you'll also need to update it in `next.config.js`).
 
-## Learn More
+## Roadmap
 
-To learn more about Next.js, take a look at the following resources:
+- [x] 1. Initial setup and deployment
+- [x] 2. Authentication system
+- [x] 3. Sidebar navigation
+  - [x] Main dashboard
+  - [x] Image Model
+  - [x] Video Model
+  - [x] Profile
+- [ ] 4. Login persistence
+- [ ] 5. User profile page
+  - [ ] Basic info
+  - [ ] Settings
+  - [ ] History
+- [ ] 6. Ski analysis features
+  - [ ] Image analysis
+    - [ ] Pose detection
+    - [ ] Form analysis
+    - [ ] Score generation
+  - [ ] Video analysis
+    - [ ] Real-time tracking
+    - [ ] Performance metrics
+    - [ ] Movement patterns
+  - [ ] Analytics dashboard
+    - [ ] Progress tracking
+    - [ ] Comparison tools
+    - [ ] Improvement suggestions
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [FastAPI Documentation](https://fastapi.tiangolo.com/) - learn about FastAPI features and API.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[FastAPI]: https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi
+[FastAPI-url]: https://fastapi.tiangolo.com/
+[PostgreSQL]: https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white
+[PostgreSQL-url]: https://www.postgresql.org/
+[TailwindCSS]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
+[TailwindCSS-url]: https://tailwindcss.com/
