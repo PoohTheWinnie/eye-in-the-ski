@@ -8,16 +8,16 @@ import Loading from "../components/loading";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(() => localStorage.getItem('token'));
+    const [user, setUser] = useState(null);
     const router = useRouter();
 
-    // useEffect(() => {
-    //     const token = localStorage.getItem('token');
-    //     if (token) {
-    //         setUser(token);
-    //         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    //     }
-    // }, []);
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            setUser(token);
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        }
+    }, []);
 
     const login = async (token) => {
         try {
