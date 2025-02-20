@@ -7,14 +7,14 @@ import axios from 'axios';
 import Sidebar from './components/Sidebar';
 
 const Home = () => {
-  const { logout } = useContext(AuthContext);
-  const [workouts, setWorkouts] = useState([]);
-  const [routines, setRoutines] = useState([]);
-  const [workoutName, setWorkoutName] = useState('');
-  const [workoutDescription, setWorkoutDescription] = useState('');
-  const [routineName, setRoutineName] = useState('');
-  const [routineDescription, setRoutineDescription] = useState('');
-  const [selectedWorkouts, setSelectedWorkouts] = useState([]);
+  // const { logout } = useContext(AuthContext);
+  // const [workouts, setWorkouts] = useState([]);
+  // const [routines, setRoutines] = useState([]);
+  // const [workoutName, setWorkoutName] = useState('');
+  // const [workoutDescription, setWorkoutDescription] = useState('');
+  // const [routineName, setRoutineName] = useState('');
+  // const [routineDescription, setRoutineDescription] = useState('');
+  // const [selectedWorkouts, setSelectedWorkouts] = useState([]);
 
   // useEffect(() => {
   //   const fetchWorkoutsAndRoutines = async () => {
