@@ -5,6 +5,7 @@ import AuthContext from "../context/AuthContext";
 import useAuthentication from "../hooks/useAuthentication";
 import Loading from "../components/loading";
 import Error from "../components/error";
+import Image from "next/image";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
@@ -31,7 +32,7 @@ const Login = () => {
       <section className="bg-white">
         <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
           <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
-            <img
+            <Image
               alt=""
               src="https://images.unsplash.com/photo-1594383815406-39916a2a5be8?q=80&w=3360&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               className="absolute inset-0 h-full w-full object-cover opacity-80"
@@ -59,7 +60,7 @@ const Login = () => {
 
               <p className="mt-4 leading-relaxed text-white/90">
                 Experience real-time ski analysis powered by AI. Track your technique, style, and efficiency with 
-                instant feedback on body positioning, turn mechanics, and speed metrics. Whether you're perfecting 
+                instant feedback on body positioning, turn mechanics, and speed metrics. Whether you&apos;re perfecting 
                 your form or pushing your limits, we help you understand and improve your performance on the slopes.
               </p>
             </div>

@@ -1,3 +1,5 @@
+"use client"
+
 import useAxios from 'axios-hooks';
 
 const useAuthentication = () => {
