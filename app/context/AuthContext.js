@@ -7,13 +7,13 @@ import { useRouter } from "next/navigation";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState("");
     const router = useRouter();
 
     useEffect(() => {
         const token = localStorage.getItem('token');
+        setUser(token);
         if (token) {
-            setUser(token);
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         }
     }, []);
@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('token');
         setUser(null);
         delete axios.defaults.headers.common['Authorization'];
-        router.push('/login')
+        router.push('/register')
     };
 
     return (

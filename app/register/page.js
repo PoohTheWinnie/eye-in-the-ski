@@ -1,15 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import useAuthentication from "../hooks/useAuthentication";
 import Error from "../components/error";
 import Loading from "../components/loading";
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-
+import AuthContext from "../context/AuthContext";
 const Register = () => {
     const { register } = useAuthentication();
+    const { user } = useContext(AuthContext);
     const router = useRouter();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -20,6 +21,12 @@ const Register = () => {
         await register.submit({ username, password, password_confirmation: passwordConfirmation });
         router.push('/');
     } 
+
+    useEffect(() => {
+        if (user) {
+            router.push('/');
+        }
+    }, [user, router]);
 
     const inputClasses = "mt-1 w-full rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm p-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500";
 
