@@ -1,17 +1,24 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import AuthContext from "../context/AuthContext";
 import useAuthentication from "../hooks/useAuthentication";
-import Loading from "../components/loading";
 import Error from "../components/error";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { user, login } = useContext(AuthContext);
+  const router = useRouter();
   const { login: loginRequest } = useAuthentication();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    if (user) {
+      router.push('/');
+    }
+  }, [user, router]);
 
   const handleSubmit = async (e) => {
       e.preventDefault();
@@ -19,9 +26,6 @@ const Login = () => {
       login(response.data.access_token);
   };
 
-  if (loginRequest.loading) {
-    return <Loading />
-  }
   if (loginRequest.error) {
     return <Error error={loginRequest.error} />
   }
