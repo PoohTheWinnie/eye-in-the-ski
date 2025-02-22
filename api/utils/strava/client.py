@@ -57,9 +57,4 @@ class StravaAPI:
         
 
 if __name__ == "__main__":
-    # async def test():
-    #     client = StravaAPI(client_id="149671", client_secret="a68ec7736a18025f40f0cd0cefaa433f58fb346a")
-    #     # access_token = await client.get_access_token("6c1675eec245ba2984e7458bd8292d950307bc0c")
-    #     # print(access_token)
-    #     activities = await client.get_athlete_activities("20bf0dea22eae761a9a12ad677a5d6594ab02aa1")
-    #     print(activities)
+    pass
