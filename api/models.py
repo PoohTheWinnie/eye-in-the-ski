@@ -1,33 +1,59 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Table
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Float, Boolean
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
 from .database import Base
-
-workout_routine_association = Table(
-    'workout_routine', Base.metadata,
-    Column('workout_id', Integer, ForeignKey('workouts.id')),
-    Column('routine_id', Integer, ForeignKey('routines.id'))
-)
 
 class User(Base):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True, index=True)
-    username = Column(String, unique=True, index=True)
-    hashed_password = Column(String)
+    username = Column(String(50), unique=True, nullable=False, index=True)
+    hashed_password = Column(String(255), nullable=False)
+    is_active = Column(Boolean, default=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+
+    # Relationship
+    profile = relationship("UserProfile", back_populates="user", uselist=False)
+
+class UserProfile(Base):
+    __tablename__ = 'user_profiles'
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey('users.id', ondelete='CASCADE'), unique=True, nullable=False)
+    name = Column(String(100))
+    email = Column(String(255), unique=True)
+    phone = Column(String(20))
     
-class Workout(Base):
-    __tablename__ = 'workouts'
+    # Strava specific fields
+    # strava_athlete_id = Column(String(50), unique=True)
+    # strava_access_token = Column(String(255))
+    # strava_refresh_token = Column(String(255))
+    # strava_token_expires_at = Column(DateTime(timezone=True))
+    last_strava_sync = Column(DateTime(timezone=True))
+    
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+
+    # Relationship
+    user = relationship("User", back_populates="profile")
+
+class Activity(Base):
+    __tablename__ = 'activities'
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     name = Column(String, index=True)
     description = Column(String, index=True)
-    routines = relationship('Routine', secondary=workout_routine_association, back_populates='workouts')
-    
-class Routine(Base):
-    __tablename__ = 'routines'
+    date = Column(DateTime, index=True)
+    duration = Column(Integer, index=True)
+    resort = Column(String, index=True)
+
+class Run(Base):
+    __tablename__ = 'runs'
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     name = Column(String, index=True)
-    description = Column(String, index=True)
-    workouts = relationship('Workout', secondary=workout_routine_association, back_populates='routines')
-    
-Workout.routines = relationship('Routine', secondary=workout_routine_association, back_populates='workouts')
+    activity_id = Column(Integer, ForeignKey('activities.id'))
+    distance = Column(Float, index=True)
+    time = Column(Integer, index=True)
+    elevation = Column(Integer, index=True)
+    average_speed = Column(Float, index=True)
+    max_speed = Column(Float, index=True)
