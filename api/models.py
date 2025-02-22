@@ -45,6 +45,9 @@ class Activity(Base):
     date = Column(DateTime, index=True)
     duration = Column(Integer, index=True)
     resort = Column(String, index=True)
+    distance = Column(Float, index=True)
+    average_speed = Column(Float, index=True)
+    max_speed = Column(Float, index=True)
 
 class Run(Base):
     __tablename__ = 'runs'

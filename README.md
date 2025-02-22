@@ -78,13 +78,17 @@ The FastApi server will be running on [http://127.0.0.1:8000](http://127.0.0.1:8
   - [x] Image Model
   - [x] Video Model
   - [x] Profile
-- [ ] 4. First deployment debugging
-- [ ] 5. Login persistence
-- [ ] 6. User profile page
+- [X] 4. First deployment debugging
+- [X] 5. Supabase setup
+- [X] 6. Database schema design
+- [X] 7. Strava Integration
+- [ ] Backend testing
+- [ ] Login persistence
+- [ ] User profile page
   - [ ] Basic info
   - [ ] Settings
   - [ ] History
-- [ ] 7. Ski analysis features
+- [ ] Ski analysis features
   - [ ] Image analysis
     - [ ] Pose detection
     - [ ] Form analysis
@@ -97,8 +101,6 @@ The FastApi server will be running on [http://127.0.0.1:8000](http://127.0.0.1:8
     - [ ] Progress tracking
     - [ ] Comparison tools
     - [ ] Improvement suggestions
-- [ ] Strava Integration
-
 
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
